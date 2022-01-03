@@ -24,7 +24,7 @@ function App() {
   useEffect(() => {
     let authToken = sessionStorage.getItem("Auth Token");
     if (authToken) {
-      navigate("/home");
+      navigate("/");
     }
   }, []);
   const handleAction = (id) => {
@@ -32,7 +32,7 @@ function App() {
     if (id === 1) {
       signInWithEmailAndPassword(authentication, email, password)
         .then((response) => {
-          navigate("/home");
+          navigate("/");
           sessionStorage.setItem(
             "Auth Token",
             response._tokenResponse.refreshToken
@@ -91,7 +91,7 @@ function App() {
             />
           }
         />
-        <Route path="/home" element={<Home />} />
+        <Route path="/" exact element={<Home />} />
       </Routes>
     </div>
   );

@@ -1,22 +1,22 @@
-import React, { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Home() {
   let navigate = useNavigate();
   const handleLogout = () => {
-    sessionStorage.removeItem('Auth Token');
-    navigate('/login');
+    sessionStorage.removeItem("Auth Token");
+    navigate("/login");
   };
 
   useEffect(() => {
-    let authToken = sessionStorage.getItem('Auth Token');
+    let authToken = sessionStorage.getItem("Auth Token");
 
     if (authToken) {
-      navigate('/home');
+      navigate("/home");
     }
 
     if (!authToken) {
-      navigate('/register');
+      navigate("/login");
     }
   }, []);
   return (
