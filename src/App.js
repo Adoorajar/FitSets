@@ -1,31 +1,30 @@
-import './App.css';
-import FitSheetsAppContainer from './components/FitSheetsAppContainer';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import FitSheetsAppContainer from "./components/FitSheetsAppContainer";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import {
   BrowserRouter as Router,
   Route,
   Routes,
   useNavigate,
-} from 'react-router-dom';
-import Form from './components/common/Form';
-import { useState, useEffect } from 'react';
-import app from './firebase-config';
+} from "react-router-dom";
+import Form from "./components/common/Form";
+import { useState, useEffect } from "react";
+import app from "./firebase-config";
 import {
   getAuth,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
-} from 'firebase/auth';
-import Home from './components/navigation/Home';
+} from "firebase/auth";
+import Home from "./components/navigation/Home";
 
 function App() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   let navigate = useNavigate();
   useEffect(() => {
-    let authToken = sessionStorage.getItem('Auth Token');
+    let authToken = sessionStorage.getItem("Auth Token");
     if (authToken) {
-      navigate('/home');
+      navigate("/home");
     }
   }, []);
   const handleAction = (id) => {
@@ -33,33 +32,33 @@ function App() {
     if (id === 1) {
       signInWithEmailAndPassword(authentication, email, password)
         .then((response) => {
-          navigate('/home');
+          navigate("/home");
           sessionStorage.setItem(
-            'Auth Token',
+            "Auth Token",
             response._tokenResponse.refreshToken
           );
         })
         .catch((error) => {
-          if (error.code === 'auth/wrong-password') {
-            toast.error('Please check the Password');
+          if (error.code === "auth/wrong-password") {
+            toast.error("Please check the Password");
           }
-          if (error.code === 'auth/user-not-found') {
-            toast.error('Please check the Email');
+          if (error.code === "auth/user-not-found") {
+            toast.error("Please check the Email");
           }
         });
     }
     if (id === 2) {
       createUserWithEmailAndPassword(authentication, email, password)
         .then((response) => {
-          navigate('/home');
+          navigate("/home");
           sessionStorage.setItem(
-            'Auth Token',
+            "Auth Token",
             response._tokenResponse.refreshToken
           );
         })
         .catch((error) => {
-          if (error.code === 'auth/email-already-in-use') {
-            toast.error('Email already in use');
+          if (error.code === "auth/email-already-in-use") {
+            toast.error("Email already in use");
           }
         });
     }
