@@ -15,6 +15,8 @@ import {
   createUserWithEmailAndPassword,
 } from "firebase/auth";
 import Home from "./components/navigation/Home";
+import NavBar from "./components/navigation/NavBar";
+import { CssBaseline } from "@mui/material";
 
 function App() {
   const [email, setEmail] = useState("");
@@ -66,7 +68,9 @@ function App() {
   };
   return (
     <div className="App">
+      <CssBaseline />
       <ToastContainer />
+      <NavBar />
       <Routes>
         <Route
           path="/login"

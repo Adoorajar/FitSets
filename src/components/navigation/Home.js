@@ -1,30 +1,22 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { Container } from "@mui/material";
 
 function Home() {
   let navigate = useNavigate();
-  const handleLogout = () => {
-    sessionStorage.removeItem("Auth Token");
-    navigate("/login");
-  };
 
   useEffect(() => {
     let authToken = sessionStorage.getItem("Auth Token");
 
     if (authToken) {
-      navigate("/home");
+      navigate("/");
     }
 
     if (!authToken) {
       navigate("/login");
     }
   }, []);
-  return (
-    <div>
-      Home Page
-      <button onClick={handleLogout}>Log Out</button>
-    </div>
-  );
+  return <Container></Container>;
 }
 
 export default Home;
