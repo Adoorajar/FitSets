@@ -9,6 +9,8 @@ import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import AddExerciseButton from "./AddExerciseButton";
+import DatePickerModal from "./DatePickerModal";
+import { Container } from "@mui/material";
 
 const NavBar = (props) => {
   let authToken = sessionStorage.getItem("Auth Token");
@@ -35,6 +37,10 @@ const NavBar = (props) => {
           </Typography>
           {authToken ? (
             <Fragment>
+              <Container>
+                <DatePickerModal />
+              </Container>
+
               <AddExerciseButton />
               <Button color="inherit" onClick={handleLogout}>
                 Logout
