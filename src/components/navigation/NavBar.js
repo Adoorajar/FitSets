@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import AppBar from "@mui/material/AppBar";
@@ -8,6 +8,7 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
+import AddExerciseButton from "./AddExerciseButton";
 
 const NavBar = (props) => {
   let authToken = sessionStorage.getItem("Auth Token");
@@ -33,9 +34,12 @@ const NavBar = (props) => {
             FitSets
           </Typography>
           {authToken ? (
-            <Button color="inherit" onClick={handleLogout}>
-              Logout
-            </Button>
+            <Fragment>
+              <AddExerciseButton />
+              <Button color="inherit" onClick={handleLogout}>
+                Logout
+              </Button>
+            </Fragment>
           ) : (
             <Button color="inherit">Login</Button>
           )}
