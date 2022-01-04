@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Container } from "@mui/material";
+import ExerciseLog from "../exercise-log/ExerciseLog";
 
 function Home() {
   let navigate = useNavigate();
@@ -16,7 +17,11 @@ function Home() {
       navigate("/login");
     }
   }, []);
-  return <Container></Container>;
+  return (
+    <Container>
+      <ExerciseLog />
+    </Container>
+  );
 }
 
 export default Home;
