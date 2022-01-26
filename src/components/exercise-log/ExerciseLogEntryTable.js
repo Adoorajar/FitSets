@@ -20,6 +20,7 @@ const rows = [
   createData(0, 10, "10:30am"),
   createData(0, 8, "10:35am"),
   createData(0, 12, "10:40am"),
+  createData(1, 2, "11:30am"),
 ];
 
 const ExerciseLogEntryTable = (props) => {
